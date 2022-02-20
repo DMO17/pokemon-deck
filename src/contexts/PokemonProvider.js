@@ -6,8 +6,8 @@ export const PokemonProvider = ({ children }) => {
   const globalContextValues = {};
 
   return (
-    <PokemonContext.PokemonProvider values={globalContextValues}>
+    <PokemonContext.Provider value={globalContextValues}>
       {children}
-    </PokemonContext.PokemonProvider>
+    </PokemonContext.Provider>
   );
 };

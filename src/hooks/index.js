@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PokemonContext } from "../contexts/PokemonProvider";
 
-export const globalContextValues = () => {
+export const usePokemonContextValues = () => {
   return useContext(PokemonContext);
 };

@@ -1,8 +1,17 @@
-
 import "./App.css";
+import { Header } from "./components/Header";
+import { PokemonInfo } from "./containers/PokemonInfo";
+import { PokemonProvider } from "./contexts/PokemonProvider";
 
 function App() {
-  return <h1>eibiera</h1>;
+  return (
+    <div>
+      <Header />
+      <PokemonProvider>
+        <PokemonInfo />
+      </PokemonProvider>
+    </div>
+  );
 }
 
 export default App;
