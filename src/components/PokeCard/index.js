@@ -10,8 +10,6 @@ export const PokeCard = () => {
   return (
     <Box
       sx={{
-        height: 350,
-        width: 250,
         border: "10px solid  black",
         borderRadius: 2,
       }}
