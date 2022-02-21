@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { randomPokemon } from "../service/PokemonApi";
+import { getPokemonList } from "../service/pokemonApi";
 // import axios from "axios";
 
 const pokemonListOfNames = [
@@ -200,35 +200,36 @@ const initialState = {
   pokemonUrl: "https://pokeapi.co/api/v2/pokemon/1/",
   pokemonData: pokemonSampleData[1],
   toggleInfo: false,
+  pokemonArray: [],
   test: [],
 };
 
 const ACTIONS = {
   GET_DATA_API: "GET-POKEMON-DATA-FROM-API",
   TOGGLE_BTN_INFO: "SHOW-INFO-SECTION",
-  TESTING: "TEST",
+  RANDOMISE_POKEMON: "RANDOMISE_POKEMON",
 };
 
-const randomPokemons = () => {
+const randomPokemonFromArr = (state) => {
+  const { pokemonArray } = state;
   const randomPokemon =
-    pokemonListOfNames[Math.floor(Math.random() * pokemonListOfNames.length)];
+    pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
 
   return randomPokemon;
 };
 
 const reducer = (state, action) => {
   if (action.type === ACTIONS.GET_DATA_API) {
-    // const poke = await randomPokemon();
-    const pokemonRandom = randomPokemons();
-    const matchData = pokemonSampleData.find((each) => {
+    const pokemonRandom = randomPokemonFromArr(state);
+    /*const pokemonRandom = await randomPokemons(); */
+/*     const matchData = pokemonSampleData.find((each) => {
       return each.name === pokemonRandom.name;
-    });
+    }); */
     return {
       ...state,
       pokemonName: pokemonRandom.name,
       pokemonUrl: pokemonRandom.url,
-      pokemonData: matchData,
-      // test: poke,
+      pokemonData: pokemonRandom,
     };
   }
   if (action.type === ACTIONS.TOGGLE_BTN_INFO) {
@@ -242,12 +243,16 @@ const reducer = (state, action) => {
 };
 
 export const PokemonProvider = ({ children }) => {
+  getPokemonList()
+    .then(data => initialState.pokemonArray = data)
+    .catch(err => { });
+
   const [state, dispatch, pokemonListOfNames] = useReducer(
     reducer,
     initialState
   );
 
-  const globalContextValues = { dispatch, ACTIONS, state, randomPokemon };
+  const globalContextValues = { dispatch, ACTIONS, state, randomPokemonFromArr };
 
   return (
     <PokemonContext.Provider value={globalContextValues}>
