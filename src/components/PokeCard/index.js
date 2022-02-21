@@ -11,11 +11,16 @@ import { usePokemonContextValues } from "../../hooks";
 export const PokeCard = () => {
   const {
     state: { pokemonData },
+    dispatch,
+    ACTIONS,
+    state,
   } = usePokemonContextValues();
 
-  // const onClick = async (e) => {
-  //   // return await dispatch({ type: ACTIONS.GET_DATA_API });
-  // };
+  const onClick = async (e) => {
+    return await dispatch({ type: ACTIONS.GET_DATA_API });
+  };
+
+  console.log(state);
 
   return (
     <Box
@@ -34,7 +39,6 @@ export const PokeCard = () => {
           border: "10px solid  black",
           borderRadius: 2,
         }}
-        // onClick={onClick}
       >
         <Card className="pokemonCard">
           <div className="cardSpacing">
@@ -60,7 +64,7 @@ export const PokeCard = () => {
         </Card>
       </Paper>
       <Box sx={{ mt: "45px" }}>
-        <Button variant="contained" fullWidth>
+        <Button variant="contained" fullWidth onClick={onClick}>
           Randomize
         </Button>
       </Box>

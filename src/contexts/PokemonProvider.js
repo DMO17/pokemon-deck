@@ -205,17 +205,23 @@ const ACTIONS = {
 };
 
 const randomPokemon = () => {
-  // const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
-  // const pokemonArray = data.results;
-  // const randomPokemon =
-  //   pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
-  // return randomPokemon;
+  const randomPokemon =
+    pokemonListOfNames[Math.floor(Math.random() * pokemonListOfNames.length)];
+
+  return randomPokemon;
 };
 
 const reducer = (state, action) => {
   if (action.type === ACTIONS.GET_DATA_API) {
+    const pokemonRandom = randomPokemon();
+    const matchData = pokemonSampleData.find((each) => {
+      return each.name === pokemonRandom.name;
+    });
     return {
       ...state,
+      pokemonName: pokemonRandom.name,
+      pokemonUrl: pokemonRandom.url,
+      pokemonData: matchData,
     };
   }
   return state;
