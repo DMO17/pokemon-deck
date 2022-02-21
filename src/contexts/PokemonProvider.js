@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { randomPokemon } from "../service/PokemonApi";
 // import axios from "axios";
 
 const pokemonListOfNames = [
@@ -199,14 +200,16 @@ const initialState = {
   pokemonUrl: "https://pokeapi.co/api/v2/pokemon/1/",
   pokemonData: pokemonSampleData[1],
   toggleInfo: false,
+  test: [],
 };
 
 const ACTIONS = {
   GET_DATA_API: "GET-POKEMON-DATA-FROM-API",
   TOGGLE_BTN_INFO: "SHOW-INFO-SECTION",
+  TESTING: "TEST",
 };
 
-const randomPokemon = () => {
+const randomPokemons = () => {
   const randomPokemon =
     pokemonListOfNames[Math.floor(Math.random() * pokemonListOfNames.length)];
 
@@ -215,7 +218,8 @@ const randomPokemon = () => {
 
 const reducer = (state, action) => {
   if (action.type === ACTIONS.GET_DATA_API) {
-    const pokemonRandom = randomPokemon();
+    // const poke = await randomPokemon();
+    const pokemonRandom = randomPokemons();
     const matchData = pokemonSampleData.find((each) => {
       return each.name === pokemonRandom.name;
     });
@@ -224,6 +228,7 @@ const reducer = (state, action) => {
       pokemonName: pokemonRandom.name,
       pokemonUrl: pokemonRandom.url,
       pokemonData: matchData,
+      // test: poke,
     };
   }
   if (action.type === ACTIONS.TOGGLE_BTN_INFO) {
@@ -232,6 +237,7 @@ const reducer = (state, action) => {
       toggleInfo: !state.toggleInfo,
     };
   }
+
   return state;
 };
 

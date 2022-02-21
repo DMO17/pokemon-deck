@@ -23,7 +23,7 @@ export const Training = () => {
           <Divider />
           <List>
             <ListItem>
-              <ListItemText>BaseExp: {pokemonData.baseExp}</ListItemText>
+              <ListItemText>BaseExp: pokemonData.baseExp</ListItemText>
             </ListItem>
             <ListItem>
               <ListItemText>

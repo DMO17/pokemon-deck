@@ -1,6 +1,6 @@
-// import axios from "axios";
+import axios from "axios";
 
-const axios = require("axios");
+// const axios = require("axios");
 
 const constructBio = (textArray) => {
   return textArray
@@ -12,7 +12,7 @@ const constructBio = (textArray) => {
     .join("+");
 };
 
-const randomPokemon = async () => {
+export const randomPokemon = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
   const { data } = await axios.get(url);
 
@@ -24,8 +24,8 @@ const randomPokemon = async () => {
   return randomPokemon;
 };
 
-const fetchPokemonData = async () => {
-  const { url } = await randomPokemon();
+export const fetchPokemonData = async (randomPokemon) => {
+  const { url } = randomPokemon();
 
   const { data: generalPokemonInfo } = await axios.get(url);
 
@@ -33,7 +33,7 @@ const fetchPokemonData = async () => {
     generalPokemonInfo.species?.url
   );
 
-  const obj = {
+  return {
     id: generalPokemonInfo?.id,
     name: generalPokemonInfo?.name,
     type: generalPokemonInfo?.types[0]?.type?.name,
@@ -50,7 +50,6 @@ const fetchPokemonData = async () => {
     }).genus,
     baseExp: generalPokemonInfo?.base_experience,
     baseHappiness: advancedPokemonInfo.base_happiness,
-    baseExp: generalPokemonInfo?.base_experience,
     growthRate: advancedPokemonInfo?.growth_rate.name,
     captureRate: advancedPokemonInfo?.capture_rate,
     stats: generalPokemonInfo?.stats?.map((each) => {
@@ -58,8 +57,6 @@ const fetchPokemonData = async () => {
     }),
     bio: constructBio(advancedPokemonInfo?.flavor_text_entries),
   };
-
-  // console.log(obj);
 };
 
 // fetchPokemonData();

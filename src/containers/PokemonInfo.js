@@ -8,8 +8,10 @@ import { usePokemonContextValues } from "../hooks";
 
 export const PokemonInfo = () => {
   const {
-    state: { toggleInfo },
+    state: { toggleInfo, test },
   } = usePokemonContextValues();
+
+  console.log(test);
 
   return (
     <Box
