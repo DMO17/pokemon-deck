@@ -34,29 +34,32 @@ const fetchPokemonData = async () => {
   );
 
   const obj = {
-    id: generalPokemonInfo.id,
-    type: generalPokemonInfo.types[0]?.type?.name,
-    img: generalPokemonInfo.sprites?.other["official-artwork"].front_default,
-    height: generalPokemonInfo.height,
-    weight: generalPokemonInfo.weight,
-    abilities: generalPokemonInfo.abilities?.map((each) => {
-      return each.ability?.name;
-    }),
+    id: generalPokemonInfo?.id,
+    name: generalPokemonInfo?.name,
+    type: generalPokemonInfo?.types[0]?.type?.name,
+    img: generalPokemonInfo?.sprites?.other["official-artwork"].front_default,
+    height: generalPokemonInfo?.height,
+    weight: generalPokemonInfo?.weight,
+    abilities: generalPokemonInfo?.abilities
+      ?.map((each) => {
+        return each.ability?.name;
+      })
+      .join(","),
     genus: advancedPokemonInfo.genera?.find((each) => {
       return each.language?.name === "en";
     }).genus,
-    baseExp: generalPokemonInfo.base_experience,
+    baseExp: generalPokemonInfo?.base_experience,
     baseHappiness: advancedPokemonInfo.base_happiness,
-    baseExp: generalPokemonInfo.base_experience,
+    baseExp: generalPokemonInfo?.base_experience,
     growthRate: advancedPokemonInfo?.growth_rate.name,
-    captureRate: advancedPokemonInfo.capture_rate,
-    stats: generalPokemonInfo.stats?.map((each) => {
+    captureRate: advancedPokemonInfo?.capture_rate,
+    stats: generalPokemonInfo?.stats?.map((each) => {
       return { name: each?.stat?.name, strength: each?.base_stat };
     }),
     bio: constructBio(advancedPokemonInfo?.flavor_text_entries),
   };
 
-  console.log(obj);
+  // console.log(obj);
 };
 
-fetchPokemonData();
+// fetchPokemonData();

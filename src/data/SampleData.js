@@ -1,6 +1,3 @@
-import React, { useReducer } from "react";
-// import axios from "axios";
-
 const pokemonListOfNames = [
   {
     name: "bulbasaur",
@@ -191,47 +188,3 @@ const pokemonSampleData = [
       "emotions of people.",
   },
 ];
-
-export const PokemonContext = React.createContext();
-
-const initialState = {
-  pokemonName: "bulbasaur",
-  pokemonUrl: "https://pokeapi.co/api/v2/pokemon/1/",
-  pokemonData: pokemonSampleData[1],
-};
-
-const ACTIONS = {
-  GET_DATA_API: "GET-POKEMON-DATA-FROM-API",
-};
-
-const randomPokemon = () => {
-  // const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
-  // const pokemonArray = data.results;
-  // const randomPokemon =
-  //   pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
-  // return randomPokemon;
-};
-
-const reducer = (state, action) => {
-  if (action.type === ACTIONS.GET_DATA_API) {
-    return {
-      ...state,
-    };
-  }
-  return state;
-};
-
-export const PokemonProvider = ({ children }) => {
-  const [state, dispatch, pokemonListOfNames] = useReducer(
-    reducer,
-    initialState
-  );
-
-  const globalContextValues = { dispatch, ACTIONS, state, randomPokemon };
-
-  return (
-    <PokemonContext.Provider value={globalContextValues}>
-      {children}
-    </PokemonContext.Provider>
-  );
-};
