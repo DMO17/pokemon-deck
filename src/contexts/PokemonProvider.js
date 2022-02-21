@@ -198,10 +198,12 @@ const initialState = {
   pokemonName: "bulbasaur",
   pokemonUrl: "https://pokeapi.co/api/v2/pokemon/1/",
   pokemonData: pokemonSampleData[1],
+  toggleInfo: false,
 };
 
 const ACTIONS = {
   GET_DATA_API: "GET-POKEMON-DATA-FROM-API",
+  TOGGLE_BTN_INFO: "SHOW-INFO-SECTION",
 };
 
 const randomPokemon = () => {
@@ -222,6 +224,12 @@ const reducer = (state, action) => {
       pokemonName: pokemonRandom.name,
       pokemonUrl: pokemonRandom.url,
       pokemonData: matchData,
+    };
+  }
+  if (action.type === ACTIONS.TOGGLE_BTN_INFO) {
+    return {
+      ...state,
+      toggleInfo: !state.toggleInfo,
     };
   }
   return state;

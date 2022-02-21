@@ -4,8 +4,13 @@ import { PokeCard } from "../components/PokeCard";
 import { SearchForm } from "../components/SearchForm";
 
 import Box from "@mui/material/Box";
+import { usePokemonContextValues } from "../hooks";
 
 export const PokemonInfo = () => {
+  const {
+    state: { toggleInfo },
+  } = usePokemonContextValues();
+
   return (
     <Box
       sx={{
@@ -19,7 +24,7 @@ export const PokemonInfo = () => {
     >
       <SearchForm />
       <PokeCard />
-      <CharacterInfo />
+      {toggleInfo && <CharacterInfo />}
     </Box>
   );
 };

@@ -7,6 +7,7 @@ import { Physical } from "./Physical";
 import { Training } from "./Training";
 import { Stats } from "./Stats";
 import { Evolution } from "./Evolution";
+import { usePokemonContextValues } from "../../hooks";
 
 export const CharacterInfo = () => {
   return (

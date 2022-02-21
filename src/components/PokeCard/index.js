@@ -16,11 +16,13 @@ export const PokeCard = () => {
     state,
   } = usePokemonContextValues();
 
-  const onClick = async (e) => {
+  const onClickRandom = async (e) => {
     return await dispatch({ type: ACTIONS.GET_DATA_API });
   };
 
-  console.log(state);
+  const onClickToggle = async (e) => {
+    return await dispatch({ type: ACTIONS.TOGGLE_BTN_INFO });
+  };
 
   return (
     <Box
@@ -39,8 +41,9 @@ export const PokeCard = () => {
           border: "10px solid  black",
           borderRadius: 2,
         }}
+        className="animate__animated animate__flip "
       >
-        <Card className="pokemonCard">
+        <Card className="pokemonCard ">
           <div className="cardSpacing">
             <Typography variant="h4" align="center">
               {pokemonData.name}
@@ -61,10 +64,15 @@ export const PokeCard = () => {
               #{pokemonData.id}
             </Typography>
           </div>
+          <Box className="infoIcon">
+            <Button variant="contained" onClick={onClickToggle}>
+              INFO
+            </Button>
+          </Box>
         </Card>
       </Paper>
       <Box sx={{ mt: "45px" }}>
-        <Button variant="contained" fullWidth onClick={onClick}>
+        <Button variant="contained" fullWidth onClick={onClickRandom}>
           Randomize
         </Button>
       </Box>
