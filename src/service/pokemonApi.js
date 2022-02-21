@@ -12,19 +12,27 @@ const constructBio = (textArray) => {
     .join("+");
 };
 
-export const randomPokemon = async () => {
+export const getPokemonList = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
   const { data } = await axios.get(url);
+  console.log(data);
+  return data.results;
+}
+
+/* export const randomPokemon = async () => {
+
 
   const pokemonArray = data.results;
+
+  console.log("pokemonArray", pokemonArray);
 
   const randomPokemon =
     pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
 
   return randomPokemon;
-};
+}; */
 
-export const fetchPokemonData = async (randomPokemon) => {
+/* export const fetchPokemonData = async (randomPokemon) => {
   const { url } = randomPokemon();
 
   const { data: generalPokemonInfo } = await axios.get(url);
@@ -58,5 +66,5 @@ export const fetchPokemonData = async (randomPokemon) => {
     bio: constructBio(advancedPokemonInfo?.flavor_text_entries),
   };
 };
-
+ */
 // fetchPokemonData();
