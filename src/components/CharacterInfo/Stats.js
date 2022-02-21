@@ -6,6 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
+import ListItem from "@mui/material/ListItem";
 
 export const Stats = () => {
   return (
@@ -16,21 +17,32 @@ export const Stats = () => {
             Stats Ability
           </Typography>
           <Divider />
-          <Typography variant="body2" color="text.secondary">
-            <Box sx={{ display: "flex" }}>
-              <List sx={{ mr: 3 }}>
-                <ListItemText>HP:345</ListItemText>
-                <ListItemText>ATK:345</ListItemText>
-                <ListItemText>DEF:345</ListItemText>
-              </List>
 
-              <List>
+          <Box sx={{ display: "flex" }}>
+            <List sx={{ mr: 3 }}>
+              <ListItem>
+                <ListItemText>HP:345</ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>ATK:345</ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>DEF:345</ListItemText>
+              </ListItem>
+            </List>
+
+            <List>
+              <ListItem>
                 <ListItemText>SP.ATK:345</ListItemText>
+              </ListItem>
+              <ListItem>
                 <ListItemText>SP.DEF:345</ListItemText>
+              </ListItem>
+              <ListItem>
                 <ListItemText>SPEED:345</ListItemText>
-              </List>
-            </Box>
-          </Typography>
+              </ListItem>
+            </List>
+          </Box>
         </CardContent>
       </Card>
     </Box>

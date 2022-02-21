@@ -8,7 +8,14 @@ import Typography from "@mui/material/Typography";
 
 export const Evolution = () => {
   return (
-    <Box sx={{ m: "35px", display: "flex", justifyContent: "space-evenly" }}>
+    <Box
+      sx={{
+        m: "35px",
+        display: "flex",
+        justifyContent: "space-evenly",
+        flex: "wrap",
+      }}
+    >
       <Box>
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia

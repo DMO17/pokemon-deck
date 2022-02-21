@@ -6,14 +6,14 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { usePokemonContextValues } from "../../hooks";
+// import { usePokemonContextValues } from "../../hooks";
 
 export const PokeCard = () => {
-  const { state, ACTIONS, dispatch } = usePokemonContextValues();
+  //   const { state, ACTIONS, dispatch } = usePokemonContextValues();
 
-  const onClick = async (e) => {
-    // return await dispatch({ type: ACTIONS.GET_DATA_API });
-  };
+  // const onClick = async (e) => {
+  //   // return await dispatch({ type: ACTIONS.GET_DATA_API });
+  // };
 
   return (
     <Box
@@ -32,7 +32,7 @@ export const PokeCard = () => {
           border: "10px solid  black",
           borderRadius: 2,
         }}
-        onClick={onClick}
+        // onClick={onClick}
       >
         <Card className="pokemonCard">
           <div className="cardSpacing">

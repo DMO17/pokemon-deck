@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@mui/material/Card";
 
 import CardContent from "@mui/material/CardContent";
+import ListItem from "@mui/material/ListItem";
 import List from "@mui/material/List";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
@@ -17,14 +18,20 @@ export const Physical = () => {
             Physical Attributes
           </Typography>
           <Divider />
-          <Typography variant="body2" color="text.secondary">
-            <List>
+          <List>
+            <ListItem>
               <ListItemText>Genus: weurbg</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>Height :weurbg</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>Weight: weurbg</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>Abilities: weurbg</ListItemText>
-            </List>
-          </Typography>
+            </ListItem>
+          </List>
         </CardContent>
       </Card>
     </Box>

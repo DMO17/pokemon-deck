@@ -6,6 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
 
 export const Training = () => {
   return (
@@ -16,14 +17,20 @@ export const Training = () => {
             Training Attributes
           </Typography>
           <Divider />
-          <Typography variant="body2" color="text.secondary">
-            <List>
+          <List>
+            <ListItem>
               <ListItemText>BaseExp: weurbg</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>BaseHappiness :weurbg</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>Capture Rate: weurbg</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>Growth Rate: weurbg</ListItemText>
-            </List>
-          </Typography>
+            </ListItem>
+          </List>
         </CardContent>
       </Card>
     </Box>
