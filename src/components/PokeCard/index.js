@@ -13,7 +13,9 @@ export const PokeCard = () => {
   const onClick = async (e) => {
     return await dispatch({ type: ACTIONS.GET_DATA_API });
   };
+
   console.log(state.pokemonData, "state object");
+
   return (
     <Box
       sx={{
