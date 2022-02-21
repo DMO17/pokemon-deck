@@ -2,8 +2,12 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Paper from "@mui/material/Paper";
+import { usePokemonContextValues } from "../../hooks";
 
 export const Profile = () => {
+  const {
+    state: { pokemonData },
+  } = usePokemonContextValues();
   return (
     <Box sx={{ margin: "5px" }}>
       <Paper
@@ -16,7 +20,7 @@ export const Profile = () => {
         <Card className="pokemonCard">
           <div className="cardSpacing">
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/57.svg"
+              src={pokemonData.img}
               alt="pokemon img"
               className="pokemonIg"
             />

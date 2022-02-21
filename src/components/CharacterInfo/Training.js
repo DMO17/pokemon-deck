@@ -7,8 +7,12 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
+import { usePokemonContextValues } from "../../hooks";
 
 export const Training = () => {
+  const {
+    state: { pokemonData },
+  } = usePokemonContextValues();
   return (
     <Box sx={{ m: "35px" }}>
       <Card sx={{ maxWidth: 345 }}>
@@ -19,16 +23,20 @@ export const Training = () => {
           <Divider />
           <List>
             <ListItem>
-              <ListItemText>BaseExp: weurbg</ListItemText>
+              <ListItemText>BaseExp: {pokemonData.baseExp}</ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText>BaseHappiness :weurbg</ListItemText>
+              <ListItemText>
+                BaseHappiness :{pokemonData.baseHappiness}
+              </ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText>Capture Rate: weurbg</ListItemText>
+              <ListItemText>
+                Capture Rate: {pokemonData.captureRate}
+              </ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText>Growth Rate: weurbg</ListItemText>
+              <ListItemText>Growth Rate: {pokemonData.growthRate}</ListItemText>
             </ListItem>
           </List>
         </CardContent>

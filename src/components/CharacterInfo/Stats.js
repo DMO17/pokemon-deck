@@ -7,8 +7,12 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
+import { usePokemonContextValues } from "../../hooks";
 
 export const Stats = () => {
+  const {
+    state: { pokemonData },
+  } = usePokemonContextValues();
   return (
     <Box sx={{ m: "35px" }}>
       <Card sx={{ maxWidth: 345 }}>
@@ -21,25 +25,31 @@ export const Stats = () => {
           <Box sx={{ display: "flex" }}>
             <List sx={{ mr: 3 }}>
               <ListItem>
-                <ListItemText>HP:345</ListItemText>
+                <ListItemText>HP:{pokemonData.stats[0].strength}</ListItemText>
               </ListItem>
               <ListItem>
-                <ListItemText>ATK:345</ListItemText>
+                <ListItemText>ATK:{pokemonData.stats[1].strength}</ListItemText>
               </ListItem>
               <ListItem>
-                <ListItemText>DEF:345</ListItemText>
+                <ListItemText>DEF:{pokemonData.stats[2].strength}</ListItemText>
               </ListItem>
             </List>
 
             <List>
               <ListItem>
-                <ListItemText>SP.ATK:345</ListItemText>
+                <ListItemText>
+                  SP.ATK:{pokemonData.stats[3].strength}
+                </ListItemText>
               </ListItem>
               <ListItem>
-                <ListItemText>SP.DEF:345</ListItemText>
+                <ListItemText>
+                  SP.DEF:{pokemonData.stats[4].strength}
+                </ListItemText>
               </ListItem>
               <ListItem>
-                <ListItemText>SPEED:345</ListItemText>
+                <ListItemText>
+                  SPEED:{pokemonData.stats[5].strength}
+                </ListItemText>
               </ListItem>
             </List>
           </Box>

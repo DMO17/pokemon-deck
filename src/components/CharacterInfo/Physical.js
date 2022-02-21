@@ -8,8 +8,12 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
+import { usePokemonContextValues } from "../../hooks";
 
 export const Physical = () => {
+  const {
+    state: { pokemonData },
+  } = usePokemonContextValues();
   return (
     <Box sx={{ m: "35px" }}>
       <Card sx={{ maxWidth: 345 }}>
@@ -20,16 +24,16 @@ export const Physical = () => {
           <Divider />
           <List>
             <ListItem>
-              <ListItemText>Genus: weurbg</ListItemText>
+              <ListItemText>Genus: {pokemonData.genus}</ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText>Height :weurbg</ListItemText>
+              <ListItemText>Height :{pokemonData.height}</ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText>Weight: weurbg</ListItemText>
+              <ListItemText>Weight: {pokemonData.weight}</ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText>Abilities: weurbg</ListItemText>
+              <ListItemText>Abilities: {pokemonData.abilities}</ListItemText>
             </ListItem>
           </List>
         </CardContent>
