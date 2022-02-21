@@ -9,7 +9,7 @@ export const PokemonInfo = () => {
   return (
     <Box
       sx={{
-        padding: "80px",
+        padding: "30px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

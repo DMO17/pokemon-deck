@@ -59,4 +59,4 @@ const fetchPokemonData = async () => {
   console.log(obj);
 };
 
-// fetchPokemonData();
+fetchPokemonData();
