@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from "react";
-import { getPokemonList } from "../service/pokemonApi";
+import { getPokemonList, fetchPokemonData } from "../service/pokemonApi";
 // import axios from "axios";
 
 const pokemonListOfNames = [
@@ -221,10 +221,7 @@ const randomPokemonFromArr = (state) => {
 const reducer = (state, action) => {
   if (action.type === ACTIONS.GET_DATA_API) {
     const pokemonRandom = randomPokemonFromArr(state);
-    /*const pokemonRandom = await randomPokemons(); */
-    /*     const matchData = pokemonSampleData.find((each) => {
-      return each.name === pokemonRandom.name;
-    }); */
+
     return {
       ...state,
       pokemonName: pokemonRandom.name,
@@ -243,16 +240,8 @@ const reducer = (state, action) => {
 };
 
 export const PokemonProvider = ({ children }) => {
-  useEffect(async () => {
-    console.log("on mount");
-    const data = await getPokemonList();
-    return (initialState.pokemonArray = data);
-    // .then((data) => (initialState.pokemonArray = data))
-    // .catch((err) => {});
-  }, []);
-
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  console.log(state);
   const globalContextValues = {
     dispatch,
     ACTIONS,

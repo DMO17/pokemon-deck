@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CharacterInfo } from "../components/CharacterInfo";
 import { PokeCard } from "../components/PokeCard";
 import { SearchForm } from "../components/SearchForm";
-
 import Box from "@mui/material/Box";
 import { usePokemonContextValues } from "../hooks";
+import { getPokemonList, fetchPokemonData } from "../service/pokemonApi";
 
 export const PokemonInfo = () => {
   const {
     state: { toggleInfo },
+    state,
   } = usePokemonContextValues();
+
+  useEffect(async () => {
+    const data = await getPokemonList();
+    return (state.pokemonArray = data);
+  }, []);
+
+  useEffect(async () => {
+    const data = await fetchPokemonData(state.pokemonUrl);
+
+    return (state.pokemonData = data);
+  }, [state.pokemonUrl]);
 
   return (
     <Box
@@ -24,7 +36,7 @@ export const PokemonInfo = () => {
     >
       {/* <SearchForm /> */}
       <PokeCard />
-      {/* {toggleInfo && <CharacterInfo />} */}
+      {toggleInfo && <CharacterInfo />}
     </Box>
   );
 };

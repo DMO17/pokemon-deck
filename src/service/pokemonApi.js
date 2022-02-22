@@ -32,10 +32,8 @@ export const getPokemonList = async () => {
   return randomPokemon;
 }; */
 
-/* export const fetchPokemonData = async (randomPokemon) => {
-  const { url } = randomPokemon();
-
-  const { data: generalPokemonInfo } = await axios.get(url);
+export const fetchPokemonData = async (randomPokemonUrl) => {
+  const { data: generalPokemonInfo } = await axios.get(randomPokemonUrl);
 
   const { data: advancedPokemonInfo } = await axios.get(
     generalPokemonInfo.species?.url
@@ -66,5 +64,5 @@ export const getPokemonList = async () => {
     bio: constructBio(advancedPokemonInfo?.flavor_text_entries),
   };
 };
- */
+
 // fetchPokemonData();
