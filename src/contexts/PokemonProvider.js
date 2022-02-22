@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { getPokemonList } from "../service/pokemonApi";
 // import axios from "axios";
 
@@ -222,7 +222,7 @@ const reducer = (state, action) => {
   if (action.type === ACTIONS.GET_DATA_API) {
     const pokemonRandom = randomPokemonFromArr(state);
     /*const pokemonRandom = await randomPokemons(); */
-/*     const matchData = pokemonSampleData.find((each) => {
+    /*     const matchData = pokemonSampleData.find((each) => {
       return each.name === pokemonRandom.name;
     }); */
     return {
@@ -243,16 +243,22 @@ const reducer = (state, action) => {
 };
 
 export const PokemonProvider = ({ children }) => {
-  getPokemonList()
-    .then(data => initialState.pokemonArray = data)
-    .catch(err => { });
+  useEffect(async () => {
+    console.log("on mount");
+    const data = await getPokemonList();
+    return (initialState.pokemonArray = data);
+    // .then((data) => (initialState.pokemonArray = data))
+    // .catch((err) => {});
+  }, []);
 
-  const [state, dispatch, pokemonListOfNames] = useReducer(
-    reducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const globalContextValues = { dispatch, ACTIONS, state, randomPokemonFromArr };
+  const globalContextValues = {
+    dispatch,
+    ACTIONS,
+    state,
+    randomPokemonFromArr,
+  };
 
   return (
     <PokemonContext.Provider value={globalContextValues}>

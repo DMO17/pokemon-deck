@@ -15,9 +15,9 @@ const constructBio = (textArray) => {
 export const getPokemonList = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
   const { data } = await axios.get(url);
-  console.log(data);
+  // console.log(data);
   return data.results;
-}
+};
 
 /* export const randomPokemon = async () => {
 

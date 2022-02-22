@@ -8,10 +8,8 @@ import { usePokemonContextValues } from "../hooks";
 
 export const PokemonInfo = () => {
   const {
-    state: { toggleInfo, test },
+    state: { toggleInfo },
   } = usePokemonContextValues();
-
-  console.log(test);
 
   return (
     <Box
@@ -24,9 +22,9 @@ export const PokemonInfo = () => {
         flexWrap: "wrap",
       }}
     >
-      <SearchForm />
+      {/* <SearchForm /> */}
       <PokeCard />
-      {toggleInfo && <CharacterInfo />}
+      {/* {toggleInfo && <CharacterInfo />} */}
     </Box>
   );
 };

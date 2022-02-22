@@ -13,13 +13,13 @@ export const PokeCard = () => {
     state: { pokemonData },
     dispatch,
     ACTIONS,
-    randomPokemonFromArr,
+    state,
   } = usePokemonContextValues();
 
   const onClickRandom = async (e) => {
     return await dispatch({ type: ACTIONS.GET_DATA_API });
   };
-
+  console.log(state);
   const onClickToggle = async (e) => {
     return await dispatch({ type: ACTIONS.TOGGLE_BTN_INFO });
   };
