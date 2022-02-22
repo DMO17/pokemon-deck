@@ -41,9 +41,9 @@ export const PokeCard = () => {
           border: "10px solid  black",
           borderRadius: 2,
         }}
-        className="animate__animated animate__flip "
+        className="animate__animated animate__fadeIn poke-card"
       >
-        <Card className="pokemonCard ">
+        <Card className="pokemonCard">
           <div className="cardSpacing">
             <Typography variant="h4" align="center">
               {pokemonData?.name}
@@ -64,7 +64,7 @@ export const PokeCard = () => {
               #{pokemonData.id}
             </Typography>
           </div>
-          <Box className="infoIcon">
+          <Box className=" infoIcon">
             <Button variant="contained" onClick={onClickToggle}>
               INFO
             </Button>

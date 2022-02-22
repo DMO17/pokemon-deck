@@ -21,7 +21,7 @@ export const PokemonInfo = () => {
     const data = await fetchPokemonData(state.pokemonUrl);
 
     return (state.pokemonData = data);
-  }, [state.pokemonUrl]);
+  }, [state.pokemonUrl, state.pokemonData]);
 
   return (
     <Box
@@ -34,7 +34,7 @@ export const PokemonInfo = () => {
         flexWrap: "wrap",
       }}
     >
-      {/* <SearchForm /> */}
+      <SearchForm />
       <PokeCard />
       {toggleInfo && <CharacterInfo />}
     </Box>

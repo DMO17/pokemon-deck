@@ -66,8 +66,8 @@ const initialState = {
   pokemonName: "bulbasaur",
   pokemonUrl: "https://pokeapi.co/api/v2/pokemon/1/",
   pokemonData: pokemonSampleData[0],
-  toggleInfo: false,
   pokemonArray: [],
+  toggleInfo: false,
 };
 
 const ACTIONS = {
