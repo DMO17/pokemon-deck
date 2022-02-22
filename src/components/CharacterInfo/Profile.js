@@ -20,7 +20,7 @@ export const Profile = () => {
         <Card className="pokemonCard">
           <div className="cardSpacing">
             <img
-              src={pokemonData.img}
+              src={pokemonData.altImg}
               alt="pokemon img"
               className="pokemonIg"
             />

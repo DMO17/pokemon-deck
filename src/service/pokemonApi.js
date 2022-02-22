@@ -2,6 +2,12 @@ import axios from "axios";
 
 // const axios = require("axios");
 
+export const getPokemonList = async () => {
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
+  const { data } = await axios.get(url);
+  return data.results;
+};
+
 const constructBio = (textArray) => {
   return textArray
     .filter((each) => {
@@ -11,26 +17,6 @@ const constructBio = (textArray) => {
     .slice(0, 9)
     .join("+");
 };
-
-export const getPokemonList = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
-  const { data } = await axios.get(url);
-  // console.log(data);
-  return data.results;
-};
-
-/* export const randomPokemon = async () => {
-
-
-  const pokemonArray = data.results;
-
-  console.log("pokemonArray", pokemonArray);
-
-  const randomPokemon =
-    pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
-
-  return randomPokemon;
-}; */
 
 export const fetchPokemonData = async (randomPokemonUrl) => {
   const { data: generalPokemonInfo } = await axios.get(randomPokemonUrl);
@@ -44,6 +30,7 @@ export const fetchPokemonData = async (randomPokemonUrl) => {
     name: generalPokemonInfo?.name,
     type: generalPokemonInfo?.types[0]?.type?.name,
     img: generalPokemonInfo?.sprites?.other["official-artwork"].front_default,
+    altImg: generalPokemonInfo?.sprites?.other.home.front_default,
     height: generalPokemonInfo?.height,
     weight: generalPokemonInfo?.weight,
     abilities: generalPokemonInfo?.abilities
