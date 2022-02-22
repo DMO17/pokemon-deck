@@ -73,7 +73,7 @@ const initialState = {
 const ACTIONS = {
   GET_DATA_API: "GET-POKEMON-DATA-FROM-API",
   TOGGLE_BTN_INFO: "SHOW-INFO-SECTION",
-  RANDOMISE_POKEMON: "RANDOMISE_POKEMON",
+  SEARCHED_POKEMON: "API CALL TO SEARCHED TERM",
 };
 
 const randomPokemonFromArr = (state) => {
@@ -94,6 +94,15 @@ const reducer = (state, action) => {
       pokemonUrl: pokemonRandom.url,
     };
   }
+  if ((action.type = ACTIONS.GET_DATA_API)) {
+    return {
+      ...state,
+      pokemonData: action.payload.data,
+      pokemonName: action.payload.searchedPokemon.name,
+      pokemonUrl: action.payload.searchedPokemon.url,
+    };
+  }
+
   if (action.type === ACTIONS.TOGGLE_BTN_INFO) {
     return {
       ...state,

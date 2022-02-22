@@ -36,7 +36,7 @@ export const PokemonInfo = () => {
     >
       <SearchForm />
       <PokeCard />
-      {toggleInfo && <CharacterInfo />}
+      <CharacterInfo />
     </Box>
   );
 };
