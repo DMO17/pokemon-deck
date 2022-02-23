@@ -21,7 +21,7 @@ export const PokemonInfo = () => {
     const data = await fetchPokemonData(state.pokemonUrl);
 
     return (state.pokemonData = data);
-  }, [state.pokemonUrl, state.pokemonData]);
+  }, [state.pokemonUrl]);
 
   return (
     <Box
@@ -36,7 +36,7 @@ export const PokemonInfo = () => {
     >
       <SearchForm />
       <PokeCard />
-      <CharacterInfo />
+      {toggleInfo && <CharacterInfo />}
     </Box>
   );
 };

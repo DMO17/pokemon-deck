@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -8,31 +8,27 @@ import { fetchPokemonData } from "../../service/pokemonApi";
 export const SearchForm = () => {
   const { state, dispatch, ACTIONS } = usePokemonContextValues();
 
-  const [searchedName, setSearchedName] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [searchResults, setSearchTerms] = useState();
+  // const [searchResults, setSearchTerms] = useState();
 
-  useEffect(async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     const searchedPokemon = state.pokemonArray.find((each) => {
-      return each.name === searchedName;
+      return each.name === inputValue;
     });
+
     if (searchedPokemon) {
-      setSearchTerms(false);
+      // setSearchTerms(false);
 
       const data = await fetchPokemonData(searchedPokemon.url);
 
-      return dispatch({
+      dispatch({
         type: ACTIONS.SEARCHED_POKEMON,
         payload: { data, searchedPokemon },
       });
-    } else {
-      setSearchTerms(true);
-    }
-  }, [searchedName]);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    return setSearchedName(inputValue);
+      setInputValue("");
+    }
   };
 
   return (
@@ -44,15 +40,13 @@ export const SearchForm = () => {
           label="Pokemon Name"
           variant="outlined"
           value={inputValue}
-          onChange={(e) => {
-            return setInputValue(e.target.value);
-          }}
+          onChange={(e) => setInputValue(e.target.value)}
         />
 
         <Button variant="outlined" type="submit" fullWidth>
           SEARCH
         </Button>
-        {searchResults === false && <div>NO POKEMON OF THAT NAME EXISTS</div>}
+        {/* {searchResults === false && <div>NO POKEMON OF THAT NAME EXISTS</div>} */}
       </form>
     </Box>
   );

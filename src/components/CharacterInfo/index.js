@@ -6,8 +6,7 @@ import { Bio } from "./Bio";
 import { Physical } from "./Physical";
 import { Training } from "./Training";
 import { Stats } from "./Stats";
-import { Evolution } from "./Evolution";
-import { usePokemonContextValues } from "../../hooks";
+// import { Evolution } from "./Evolution";
 
 export const CharacterInfo = () => {
   return (
@@ -41,7 +40,7 @@ export const CharacterInfo = () => {
         <Stats />
         <Training />
       </Box>
-      <Evolution />
+      {/* <Evolution /> */}
     </Box>
   );
 };

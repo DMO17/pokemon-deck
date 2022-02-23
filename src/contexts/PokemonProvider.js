@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useReducer } from "react";
 
 const pokemonSampleData = [
   {
@@ -6,6 +6,8 @@ const pokemonSampleData = [
     name: "bulbasaur",
     type: "grass",
     img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    altImg:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png",
     height: 7,
     weight: 69,
     abilities: "overgrow,chlorophyll",
@@ -94,19 +96,18 @@ const reducer = (state, action) => {
       pokemonUrl: pokemonRandom.url,
     };
   }
+  if (action.type === ACTIONS.TOGGLE_BTN_INFO) {
+    return {
+      ...state,
+      toggleInfo: !state.toggleInfo,
+    };
+  }
   if ((action.type = ACTIONS.GET_DATA_API)) {
     return {
       ...state,
       pokemonData: action.payload.data,
       pokemonName: action.payload.searchedPokemon.name,
       pokemonUrl: action.payload.searchedPokemon.url,
-    };
-  }
-
-  if (action.type === ACTIONS.TOGGLE_BTN_INFO) {
-    return {
-      ...state,
-      toggleInfo: !state.toggleInfo,
     };
   }
 

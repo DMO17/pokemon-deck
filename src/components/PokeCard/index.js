@@ -13,7 +13,6 @@ export const PokeCard = () => {
     state: { pokemonData },
     dispatch,
     ACTIONS,
-    state,
   } = usePokemonContextValues();
 
   const onClickRandom = async (e) => {
