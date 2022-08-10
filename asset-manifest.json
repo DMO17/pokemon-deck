@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pokemon-deck/static/css/main.0d56fe5e.css",
+    "main.js": "/pokemon-deck/static/js/main.94387be0.js",
+    "index.html": "/pokemon-deck/index.html",
+    "main.0d56fe5e.css.map": "/pokemon-deck/static/css/main.0d56fe5e.css.map",
+    "main.94387be0.js.map": "/pokemon-deck/static/js/main.94387be0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0d56fe5e.css",
+    "static/js/main.94387be0.js"
+  ]
+}
