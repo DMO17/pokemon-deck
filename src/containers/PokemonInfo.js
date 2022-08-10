@@ -12,16 +12,24 @@ export const PokemonInfo = () => {
     state,
   } = usePokemonContextValues();
 
-  useEffect(async () => {
-    const data = await getPokemonList();
-    return (state.pokemonArray = data);
-  }, []);
+  useEffect(() => {
+    const fetchPokeList = async () => {
+      const data = await getPokemonList();
+      return (state.pokemonArray = data);
+    };
 
-  useEffect(async () => {
-    const data = await fetchPokemonData(state.pokemonUrl);
+    fetchPokeList();
+  }, [state]);
 
-    return (state.pokemonData = data);
-  }, [state.pokemonUrl]);
+  useEffect(() => {
+    const fetchPokeData = async () => {
+      const data = await fetchPokemonData(state.pokemonUrl);
+
+      return (state.pokemonData = data);
+    };
+
+    fetchPokeData();
+  }, [state]);
 
   return (
     <Box
